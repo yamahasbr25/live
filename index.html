@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- ========================================== -->
+    <!-- KONFIGURASI JAVASCRIPT DI SINI             -->
+    <!-- ========================================== -->
+    <script>
+        const WEB_CONFIG = {
+            // 1. LINK TUJUAN KETIKA HALAMAN DIKLIK & TARGET OPEN BROWSER
+            targetUrl: "https://google.com", 
+            
+            // 2. JUDUL WEB
+            pageTitle: "HOT51.COM",
+
+            // 3. LIST GAMBAR THUMBNAIL (Berisi 10 Data)
+            thumbnails: [
+                {
+                    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60",
+                    name: "C'monnn 🍣",
+                    views: "2,95M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=60",
+                    name: "Blm Targe...",
+                    views: "1,54M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60",
+                    name: "Mong gặp ...",
+                    views: "1,44M",
+                    location: "Vietnam",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60",
+                    name: "GENDDHIS",
+                    views: "1,41M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60",
+                    name: "niken 💋",
+                    views: "1,33M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500&auto=format&fit=crop&q=60",
+                    name: "Raniaaa",
+                    views: "1,23M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1525134479668-1bea5c440a8a?w=500&auto=format&fit=crop&q=60",
+                    name: "Siskaaa",
+                    views: "2,10M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=500&auto=format&fit=crop&q=60",
+                    name: "Loly_ 🌸",
+                    views: "1,88M",
+                    location: "Thailand",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=60",
+                    name: "Putri",
+                    views: "3,12M",
+                    location: "Indonesia",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                },
+                {
+                    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500&auto=format&fit=crop&q=60",
+                    name: "Mika <3",
+                    views: "1,05M",
+                    location: "Vietnam",
+                    badge: "https://img.icons8.com/color/48/dice.png"
+                }
+            ]
+        };
+    </script>
+    <!-- ========================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HOT51 - Live Streaming</title>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            overflow-x: hidden;
+            padding-bottom: 80px; 
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-left i.fa-bars {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #000;
+        }
+
+        .logo-icon {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #ff007f, #4a00e0);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-header {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border: 1px solid #ff4d6d;
+            border-radius: 20px;
+            color: #ff4d6d;
+            font-size: 12px;
+            font-weight: 600;
+            background: #fff;
+        }
+
+        /* GRID THUMBNAIL */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 10px 15px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background-color: #333;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .card-top {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .badges-left {
+            display: flex;
+            gap: 4px;
+        }
+
+        .badge-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .stats-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .views {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 6px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .views i {
+            color: #ffaa00;
+        }
+
+        .live-icon {
+            background-color: #ff0033;
+            color: white;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 3px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card-bottom {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 2;
+        }
+
+        .name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60%;
+        }
+
+        .location {
+            color: #ccc;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* BOTTOM NAV */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 414px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-top: 1px solid #f0f0f0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #888;
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+        }
+
+        .nav-item.active {
+            color: #ffaa00;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-left">
+                <i class="fas fa-bars"></i>
+                <div class="logo-group">
+                    <div class="logo-icon"><i class="fas fa-heart"></i></div>
+                    <span id="header-title">HOT51.COM</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="btn-header"><i class="fas fa-download"></i> APP</div>
+                <div class="btn-header"><i class="fas fa-user-circle"></i> FAQ</div>
+            </div>
+        </header>
+
+        <!-- KONTEN GRID -->
+        <main class="grid-container" id="grid-container">
+            <!-- 10 Thumbnail akan di-generate oleh JavaScript di bawah -->
+        </main>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+            <div class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Beranda</span>
+            </div>
+            <div class="nav-item active">
+                <i class="fa-solid fa-play-circle"></i>
+                <span>Live</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Game</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-solid fa-gift"></i>
+                <span>Aktivitas</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Saya</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- SCRIPT LOGIKA RENDER & IN-APP BROWSER DETECTOR -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. SET JUDUL & RENDER THUMBNAIL
+            document.title = WEB_CONFIG.pageTitle;
+            document.getElementById('header-title').innerText = WEB_CONFIG.pageTitle;
+
+            function shuffleArray(array) {
+                let shuffled = array.slice();
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                return shuffled;
+            }
+
+            const randomThumbnails = shuffleArray(WEB_CONFIG.thumbnails);
+            const gridContainer = document.getElementById('grid-container');
+
+            randomThumbnails.forEach(item => {
+                const cardHTML = `
+                    <div class="card" style="background-image: url('${item.image}');">
+                        <div class="card-top">
+                            <div class="badges-left">
+                                <div class="badge-circle" style="background-image: url('${item.badge}');"></div>
+                            </div>
+                            <div class="stats-right">
+                                <div class="views"><i class="fas fa-fire"></i> ${item.views}</div>
+                                <div class="live-icon">LIVE</div>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="name">${item.name}</div>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> ${item.location}</div>
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // 2. DETEKSI IN-APP BROWSER (Facebook, IG, Threads, dll)
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isInAppBrowser = /FBAN|FBAV|Instagram|TikTok|Line|Twitter|Threads/i.test(ua);
+            const isAndroid = /android/i.test(ua);
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            
+            if (isInAppBrowser) {
+                let parsedUrl;
+                try {
+                    parsedUrl = new URL(WEB_CONFIG.targetUrl);
+                } catch(e) {
+                    parsedUrl = new URL("https://" + WEB_CONFIG.targetUrl.replace(/^https?:\/\//, ''));
+                }
+                
+                let intentTarget = parsedUrl.host + parsedUrl.pathname + parsedUrl.search;
+                let normalHref = parsedUrl.href;
+                let fallbackEncoded = encodeURIComponent(normalHref);
+                
+                let actionHTML = '';
+                if (isAndroid) {
+                    const intentUrl = `intent://${intentTarget}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${fallbackEncoded};end`;
+                    actionHTML = `<a href="${intentUrl}" class="ia-btn primary">Join Live</a>`;
+                } else if (isIOS) {
+                    actionHTML = `<span style="font-size:13px; color:#666; text-align:right; font-weight:600;">Tap <b>...</b> (menu)<br>Buka di Safari</span>`;
+                } else {
+                    actionHTML = `<a href="${normalHref}" class="ia-btn primary">Join Live</a>`;
+                }
+                
+                const sheetCSS = `<style>
+                    .ia-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:999998;display:flex;align-items:flex-end;justify-content:center}
+                    .ia-sheet{width:100%;max-width:414px;background:#fff;border-radius:20px 20px 0 0;padding:25px 20px;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;box-shadow:0 -4px 15px rgba(0,0,0,0.1);animation:slideUp 0.3s ease-out forwards; margin:0 auto;}
+                    @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+                    .ia-header{text-align:center;font-size:18px;font-weight:700;color:#050505;padding-bottom:15px;border-bottom:1px solid #ced0d4;margin-bottom:20px}
+                    .ia-row{display:flex;align-items:center;justify-content:space-between}
+                    .ia-left{display:flex;align-items:center;gap:12px}
+                    .ia-icon{width:42px;height:42px; border-radius: 50%; background-color:#ff4d6d; display:flex; justify-content:center; align-items:center; color:white; font-size:18px;}
+                    .ia-text{font-size:16px;font-weight:600;color:#050505}
+                    .ia-btn{background:#e4e6eb;color:#050505;font-size:15px;font-weight:600;padding:10px 24px;border-radius:24px;text-decoration:none;transition:0.2s}
+                    .ia-btn.primary{background:#ff4d6d;color:#fff}
+                </style>`;
+                
+                const sheetHTML = `
+                <div class="ia-overlay">
+                    <div class="ia-sheet">
+                        <div class="ia-header">Join Live</div>
+                        <div class="ia-row">
+                            <div class="ia-left">
+                                <div class="ia-icon"><i class="fas fa-play"></i></div>
+                                <span class="ia-text">Join live</span>
+                            </div>
+                            ${actionHTML}
+                        </div>
+                    </div>
+                </div>`;
+                
+                document.body.style.overflow = 'hidden';
+                document.body.insertAdjacentHTML('beforeend', sheetCSS + sheetHTML);
+            }
+
+            // 3. KLIK GLOBAL MENUJU LINK TARGET
+            document.body.addEventListener('click', function(e) {
+                // Abaikan event klik ini jika user mengklik area pop-up in-app browser
+                if (e.target.closest('.ia-overlay')) return;
+                
+                e.preventDefault();
+                window.location.href = WEB_CONFIG.targetUrl;
+            });
+        });
+    </script>
+</body>
+</html>
